@@ -1,0 +1,9 @@
+{
+  "name": "do-a-thing",
+  "description": "Find some random reading",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rm -rf public && mkdir public && cp index.html public"
+  },
+  "license": "MIT"
+}

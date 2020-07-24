@@ -1,0 +1,9 @@
+{
+  "name": "keypress",
+  "description": "List out keypress events",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rm -rf public && mkdir public && cp src/* public"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "pi-day-2018",
+  "description": "Happy PI day - 2018",
+  "staticBuild": "build",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-scripts": "2.0.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prettier-watch": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
+  },
+  "devDependencies": {
+    "onchange": "^5.1.0",
+    "prettier": "^1.14.3"
+  },
+  "homepage": "https://metriccaution.github.io/pi-day-2018/",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

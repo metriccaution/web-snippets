@@ -1,0 +1,15 @@
+{
+  "name": "web-snippets",
+  "version": "1.0.0",
+  "description": "A bucket of various web pages and some glue",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "p-map": "^4.0.0"
+  }
+}
