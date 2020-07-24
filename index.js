@@ -50,6 +50,7 @@ pMap(
       destination
     );
 
+    console.log(`Complete ${projectName}`);
     return { name, description };
   },
   {
@@ -64,7 +65,7 @@ pMap(
         `<div class="project">
             <span>
                 <h2>
-                    <a href="/${project.name}">${project.name}</a>
+                    <a href="./${project.name}">${project.name}</a>
                 </h2>
                 <p>${project.description}</p>
             </span>

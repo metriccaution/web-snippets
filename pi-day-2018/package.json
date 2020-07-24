@@ -20,7 +20,7 @@
     "onchange": "^5.2.0",
     "prettier": "^1.19.1"
   },
-  "homepage": "https://metriccaution.github.io/pi-day-2018/",
+  "homepage": "./",
   "browserslist": [
     ">0.2%",
     "not dead",
