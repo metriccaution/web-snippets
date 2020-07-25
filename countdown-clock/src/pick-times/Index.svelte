@@ -20,7 +20,7 @@
       end: setDate(12, 31, setTime(23, 59, 59, new Date())).getTime(),
     },
     {
-      name: "The year 3000, from the release of the Busted single",
+      name: "The year 3000, starting from the release of the Busted single",
       start: new Date("2003-01-13T00:00:00.000Z").getTime(),
       end: new Date("3000-01-01T00:00:00.000Z").getTime(),
     },
