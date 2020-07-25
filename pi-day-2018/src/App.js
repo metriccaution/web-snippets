@@ -9,7 +9,7 @@ class App extends Component {
     const initialPoints = 100;
     this.state = {
       pointsCount: initialPoints,
-      points: makePoints(initialPoints),
+      points: makePoints(initialPoints)
     };
   }
 
@@ -20,14 +20,14 @@ class App extends Component {
 
   render() {
     const points = this.state.points;
-    const steps = stepsToPi(points).map((text) => <li key={text}>{text}</li>);
+    const steps = stepsToPi(points).map(text => <li key={text}>{text}</li>);
 
     return (
       <div style={{ paddingTop: 10, paddingLeft: 10 }}>
         <div
           style={{
             display: "inline-block",
-            maxWidth: "50%",
+            maxWidth: "50%"
           }}
         >
           <Graph points={points} size={500} />
@@ -38,7 +38,7 @@ class App extends Component {
             verticalAlign: "top",
             padding: 20,
             display: "inline-block",
-            maxWidth: "50%",
+            maxWidth: "50%"
           }}
         >
           <button
@@ -51,7 +51,7 @@ class App extends Component {
           <input
             type="number"
             value={this.state.pointsCount}
-            onChange={(e) => this.handleChange(e)}
+            onChange={e => this.handleChange(e)}
           />
           <ol>{steps}</ol>
         </div>

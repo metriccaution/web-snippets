@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Web markdown editor",
   "scripts": {
-    "test": "eslint . --ext .js,.jsx,.ts,.tsx && tsc",
+    "test": "eslint src/ --ext .js,.jsx,.ts,.tsx && tsc",
     "prebuild": "rm -rf public",
     "build": "rollup -c rollup.config.js"
   },
