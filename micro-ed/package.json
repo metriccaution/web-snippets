@@ -1,0 +1,9 @@
+{
+  "name": "micro-ed",
+  "description": "A mini web-page editor, with the ability to generate data URLs",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rm -rf public && mkdir public && cp index.html public"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,78 @@
+<html><head>
+  <title>~</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+    html {
+      background: #000;
+    }
+
+    label {
+      color: #fff;
+      padding-right: 1em;
+    }
+
+    textarea, input {
+      background: #224;
+      border: 0;
+      color: #fff;
+    }
+
+    iframe {
+      background: #fff;
+    }
+
+    textarea, iframe {
+      width: 40%;
+      height: 42%;
+      margin: 0.5% 1%;
+      resize: none;
+    }
+
+    input {
+      width: 84%;
+      margin-bottom: 0.5%;
+    }
+  </style>
+</head>
+<body>
+  <div>
+<div>
+    <label for="encoded">Editor</label><input id="encoded">
+  </div>
+  <div>
+    <label for="pagedata">Content</label><input id="pagedata">
+  </div>
+  <div>
+    <label for="isrc">Embed</label><input id="isrc">
+  </div>
+  </div>
+  <textarea id="html" placeholder="HTML"></textarea>
+  <textarea id="css" placeholder="CSS"></textarea>
+  <textarea id="js" placeholder="JavaScript"></textarea>
+  <iframe id="iframe" srcdoc="<style></style><script></script>"></iframe>
+  <script>
+    location.hash.replace(/^#/, '').split('-')
+      .map(part => atob(part))
+      .forEach((part, index) => {
+        if (index === 0) html.value = part;
+        if (index === 1) css.value = part;
+        if (index === 2) js.value = part;
+      });
+
+    const update = () => {
+      const src = html.value + '<style>' + css.value + '<\/style><script>' + js.value + '<\/script>';
+      iframe.srcdoc = src;
+      isrc.value = "<iframe src=\"data:text/html;charset=utf-8," + encodeURI(src).replace(/#/g, '%23') + "\" />";
+      pagedata.value = "data:text/html;charset=utf-8," + encodeURI(src).replace(/#/g, '%23')
+
+      const hash = btoa(html.value) + '-' + btoa(css.value) + '-' + btoa(js.value);
+
+      location.hash = hash;
+      encoded.value = "data:text/html;charset=utf-8," +
+        encodeURI(document.children[0].outerHTML).replace(/#/g, '%23') +
+        "#" + hash;
+    }
+
+    document.onchange = update;
+    update();
+  </script></body></html>
