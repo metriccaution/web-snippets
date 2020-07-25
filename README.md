@@ -2,8 +2,6 @@
 
 A collection of a few toys and tools to be statically hosted on Github Pages.
 
-## TODO
+![Publish UI](https://github.com/metriccaution/web-snippets/workflows/Publish%20UI/badge.svg)
 
-1. Create GH repo
-2. Automated build
-3. Retire old repos
+[Root Page](https://metriccaution.github.io/web-snippets/)
