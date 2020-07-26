@@ -2,7 +2,7 @@
 
 A browser-based markdown editor, designed to work offline, and to be able to be saved locally and ran from static files, without a web server.
 
-[View in browser](https://metriccaution.github.io/dropship/)
+[View in browser](https://metriccaution.github.io/web-snippets/dropship/)
 
 Currently, this project is a very bare-bones MVP - Allowing for editing markdown (with syntax highlighting) and for viewing the rendered output in-browser.
 

@@ -2,4 +2,4 @@
 
 Celebrating Pi day by approximating pi using a Monte-Carlo method.
 
-[Hosted on GitHub pages](https://metriccaution.github.io/pi-day-2018/).
+[Hosted on GitHub pages](https://metriccaution.github.io/web-snippets/pi-day-2018/).
