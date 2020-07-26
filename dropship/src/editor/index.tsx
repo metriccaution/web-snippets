@@ -45,8 +45,9 @@ export default class Editor extends Component<CodeMirrorProps, {}> {
         lineWrapping: true,
         autofocus: true,
       });
+      const editor = this.editor;
 
-      this.editor.setOption("extraKeys", {
+      editor.setOption("extraKeys", {
         Tab: function (cm) {
           const indentUnit = cm.getOption("indentUnit");
           if (!indentUnit) {
@@ -57,8 +58,26 @@ export default class Editor extends Component<CodeMirrorProps, {}> {
         },
       });
 
-      this.editor.on("change", () => {
+      editor.on("change", () => {
         this.props.onChange(this.getText());
+      });
+
+      /**
+       * Indentation on wrapped lines
+       */
+      const basePadding = 4; // Default, from inspection in-browser
+      editor.on("renderLine", (instance, line, element) => {
+        const charWidth = editor.defaultCharWidth();
+        const offset =
+          CodeMirror.countColumn(
+            line.text,
+            null,
+            instance.getOption("tabSize") || 0
+          ) * charWidth;
+        // Pull the start of this line left
+        element.style.textIndent = "-" + offset + "px";
+        // Push the whole, wrapped line right
+        element.style.paddingLeft = basePadding + offset + "px";
       });
     }
   }

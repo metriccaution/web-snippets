@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Web markdown editor",
   "scripts": {
+    "pretest": "prettier --write '{src,templates}/**/*.{ts,tsx,scss,html}' '*.{json,js,md}'",
     "test": "eslint src/ --ext .js,.jsx,.ts,.tsx && tsc",
     "prebuild": "rm -rf public",
     "build": "rollup -c rollup.config.js"
