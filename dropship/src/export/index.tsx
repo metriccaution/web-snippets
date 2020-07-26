@@ -30,14 +30,14 @@ table {
 }
 
 table th,td {
-  border-color: #81c5da;
+  border-color: #444;
   border-style: solid;
   border-width: 1px;
   padding: 0.5em;
 }
 
-pre {
-    color: #b2e4ae;
+code, pre {
+    color: #444;
 }
 
 .mermaid-diagram {
@@ -65,24 +65,15 @@ export interface ExportProps {
 }
 
 /**
- * State for exporting
- */
-interface ExportState {
-  renderCss: string;
-}
-
-/**
  * Tooling for exporting the page to HTML
  */
-export default class ExportTab extends Component<ExportProps, ExportState> {
+export default class ExportTab extends Component<ExportProps, {}> {
   private editorRef: RefObject<HTMLDivElement>;
 
   constructor(properties: ExportProps) {
     super(properties);
     this.editorRef = createRef();
-    this.state = {
-      renderCss: "",
-    };
+    this.state = {};
   }
 
   /**
@@ -126,9 +117,6 @@ export default class ExportTab extends Component<ExportProps, ExportState> {
             <style>
                 ${exportedStyles}
             </style>
-            <style>
-                ${this.state.renderCss}
-            </style>
         </head>
         <body>
             ${this.editorRef.current.innerHTML}
@@ -140,17 +128,6 @@ export default class ExportTab extends Component<ExportProps, ExportState> {
     return (
       <div class="export">
         <button onClick={this.openAsTab.bind(this)}>Open In New Tab</button>
-
-        <h1>Export Styling</h1>
-        <p>Custom CSS for exported documents</p>
-        <textarea
-          value={this.state.renderCss}
-          onKeyDown={(event: any): void =>
-            this.setState({
-              renderCss: event.target.value,
-            })
-          }
-        />
 
         {/* Use a hidden preview tab to render the page */}
         <div class="html-render" ref={this.editorRef}>
