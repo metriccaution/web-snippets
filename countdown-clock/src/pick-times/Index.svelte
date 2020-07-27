@@ -29,6 +29,11 @@
       start: new Date("2020-01-31T23:00:00.000Z").getTime(),
       end: new Date("2020-12-31T23:59:59.999Z").getTime(),
     },
+    {
+      name: "Average human lifespan, starting now",
+      start: Date.now(),
+      end: Date.now() + (1000 * 60 * 60 * 24 * 365.25 * 79)
+    }
   ];
 </script>
 
