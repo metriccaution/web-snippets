@@ -119,7 +119,7 @@ export default class ExportTab extends Component<ExportProps, {}> {
 
     const title = this.getMarkdownTitle(this.props.markdown);
     this.saveData(
-      `${new Date().toISOString()} - ${title}`,
+      `${new Date().toISOString()} - ${title}.md`,
       this.props.markdown
     );
   }
@@ -134,7 +134,7 @@ export default class ExportTab extends Component<ExportProps, {}> {
 
     const title = this.getMarkdownTitle(this.props.markdown);
     this.saveData(
-      `${new Date().toISOString()} - ${title}`,
+      `${new Date().toISOString()} - ${title}.html`,
       this.markdownAsHtml()
     );
   }
