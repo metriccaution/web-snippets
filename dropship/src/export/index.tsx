@@ -106,10 +106,50 @@ export default class ExportTab extends Component<ExportProps, {}> {
     if (!newWindow) {
       return;
     }
+    newWindow.document.write(this.markdownAsHtml());
+  }
+
+  /**
+   * Download the plain markdown to file
+   */
+  private downloadMarkdown(): void {
+    if (!this.editorRef.current) {
+      return;
+    }
+
+    const title = this.getMarkdownTitle(this.props.markdown);
+    this.saveData(
+      `${new Date().toISOString()} - ${title}`,
+      this.props.markdown
+    );
+  }
+
+  /**
+   * Download rendered HTML to file
+   */
+  private downloadHtml(): void {
+    if (!this.editorRef.current) {
+      return;
+    }
+
+    const title = this.getMarkdownTitle(this.props.markdown);
+    this.saveData(
+      `${new Date().toISOString()} - ${title}`,
+      this.markdownAsHtml()
+    );
+  }
+
+  /**
+   * Render the markdown to HTML
+   */
+  private markdownAsHtml(): string {
+    if (!this.editorRef.current) {
+      return "";
+    }
 
     const title = this.getMarkdownTitle(this.props.markdown);
 
-    newWindow.document.write(`<!DOCTYPE html>
+    return `<!DOCTYPE html>
     <html lang="en">
         <head>
             <meta charset="utf-8" />
@@ -121,13 +161,37 @@ export default class ExportTab extends Component<ExportProps, {}> {
         <body>
             ${this.editorRef.current.innerHTML}
         </body>
-    </html>`);
+    </html>`;
+  }
+
+  /**
+   * Download some data to file
+   *
+   * @param fileName Filename to download to
+   * @param contents Contents of the download
+   */
+  private saveData(fileName: string, contents: string): void {
+    const encoded = btoa(contents);
+    const url = `data:/text/plain;base64,${encoded}`;
+
+    const link = document.createElement("a");
+    link.target = "_blank";
+    link.download = fileName;
+    link.href = url;
+
+    document.body.append(link);
+    link.click();
+    link.remove();
   }
 
   public render(): h.JSX.Element {
     return (
       <div class="export">
         <button onClick={this.openAsTab.bind(this)}>Open In New Tab</button>
+        <button onClick={this.downloadMarkdown.bind(this)}>
+          Download Markdown
+        </button>
+        <button onClick={this.downloadHtml.bind(this)}>Download HTML</button>
 
         {/* Use a hidden preview tab to render the page */}
         <div class="html-render" ref={this.editorRef}>
