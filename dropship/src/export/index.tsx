@@ -40,6 +40,12 @@ code, pre {
     color: #444;
 }
 
+blockquote {
+  background-color: rgb(51, 51, 51);
+  color: rgb(204, 204, 204);
+  padding: 0.75em;
+}
+
 .mermaid-diagram {
     text-align: center;
 }
