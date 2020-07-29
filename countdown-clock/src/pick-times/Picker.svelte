@@ -5,10 +5,7 @@
   export let label: string;
   export let time: number = 0;
 
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
-
-  let formattedTime = new Date().toISOString();
+  let formattedTime: string;
   $: formattedTime = new Date(time).toISOString();
 
   let valid = true;
@@ -17,11 +14,9 @@
     const target = e.target as HTMLInputElement;
     const value = new Date(target.value);
     valid = !isNaN(value.getTime());
-    if (!valid) {
-      return;
+    if (valid) {
+      time = value.getTime();
     }
-
-    dispatch("date-change", { value: value.getTime() });
   }
 </script>
 

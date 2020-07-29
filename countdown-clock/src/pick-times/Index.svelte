@@ -32,8 +32,8 @@
     {
       name: "Average human lifespan, starting now",
       start: Date.now(),
-      end: Date.now() + (1000 * 60 * 60 * 24 * 365.25 * 79)
-    }
+      end: Date.now() + 1000 * 60 * 60 * 24 * 365.25 * 79,
+    },
   ];
 </script>
 
@@ -64,23 +64,17 @@
     Pick the start and end of your countdown, or pick one from the list below
   </p>
   <p>
-    <Picker
-      label="Start"
-      on:date-change={(e) => (start = e.detail.value)}
-      time={start} />
+    <Picker label="Start" bind:time={start} />
   </p>
   <p>
-    <Picker
-      label="End"
-      on:date-change={(e) => (end = e.detail.value)}
-      time={end} />
+    <Picker label="End" bind:time={end} />
   </p>
   <p>
     <a href={`?start=${start}&end=${end}`}>Go!</a>
   </p>
 
   <ol>
-    {#each countdowns as { name, start, end }}
+    {#each countdowns as { name, start, end } (name)}
       <li>
         <a href={`?start=${start}&end=${end}`}>{name}</a>
       </li>
