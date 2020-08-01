@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "flexsearch": "^0.6.32",
     "fs-extra": "^9.0.1",
     "p-map": "^4.0.0"
   }
