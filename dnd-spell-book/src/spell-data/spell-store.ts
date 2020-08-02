@@ -1,11 +1,4 @@
-import {
-  flatten,
-  uniq,
-  uniqBy,
-  intersection,
-  difference,
-  flatMap,
-} from "lodash";
+import { flatten, uniq, uniqBy, flatMap } from "lodash";
 import flexsearch from "flexsearch";
 import { derived, writable } from "svelte/store";
 import { DataSource, FullSpell, Spell } from "./spell-types";
@@ -79,19 +72,19 @@ export const filteredSpells = derived(
 const consolidate = (aliases: string[][]): string[][] => {
   let changed = false;
 
-  const ret: string[][] = [];
+  const ret: Set<string>[] = [];
   for (const aliasSet of aliases) {
-    const match = ret.find((s) => intersection(aliasSet, s).length > 0);
+    const match = ret.find((s) => aliasSet.some((a) => s.has(a)));
     if (match) {
       changed = true;
-      const toAdd: string[] = difference(aliasSet, match);
-      toAdd.forEach((s) => match.push(s));
+      aliasSet.forEach((a) => match.add(a));
     } else {
-      ret.push(aliasSet);
+      ret.push(new Set<string>(aliasSet));
     }
   }
 
-  return changed ? consolidate(ret) : ret;
+  const retArrays = ret.map((s) => Array.from(s));
+  return changed ? consolidate(retArrays) : retArrays;
 };
 
 /**
