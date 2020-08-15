@@ -1,8 +1,5 @@
 <script lang="ts">
-  /**
-   * Full details of a spell
-   */
-  import marked from "marked";
+  import Markdown from "./Markdown.svelte";
 
   export let spell: SpellDetails;
 
@@ -47,7 +44,14 @@
 </script>
 
 <style>
-  /* TODO */
+  table {
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  th, td {
+    padding: 0.3em;
+  }
 </style>
 
 <h1>{spell.name}</h1>
@@ -93,15 +97,11 @@
   </tbody>
 </table>
 
-<div>
-  {@html marked(spell.description)}
-</div>
+<Markdown text={spell.description} />
 
 {#if spell.higherLevel}
   <h2>At a Higher Level</h2>
-  <div>
-    {@html marked(spell.higherLevel)}
-  </div>
+  <Markdown text={spell.higherLevel} />
 {/if}
 
 {#if spell.knownBy.length > 0}

@@ -23,14 +23,17 @@
 <style>
   button {
     display: block;
-    width: 100%;
+    width: 273px;
     padding: 1em;
     white-space: pre-wrap;
+    margin: 0.5em auto;
+    background-color: #25C440;
+    box-shadow: 0px 3px 10px #333;
   }
 
   .active {
-    /* TODO */
-    background-color: chartreuse;
+    background-color: #089E21;
+    color: #efefef;
   }
 </style>
 

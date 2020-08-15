@@ -54,6 +54,7 @@ const indexedSpells = derived(compiledSpells, (spells) => {
 export const filteredSpells = derived(
   [searchTerm, indexedSpells, compiledSpells],
   ([term, index, spells]) => {
+    // TODO - This breaks when searching while something's selected
     if (!term) return spells;
 
     const matches: string[] = (index.search(term) as any).map(
