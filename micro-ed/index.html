@@ -62,7 +62,7 @@
     const update = () => {
       const src = html.value + '<style>' + css.value + '<\/style><script>' + js.value + '<\/script>';
       iframe.srcdoc = src;
-      isrc.value = "<iframe src=\"data:text/html;charset=utf-8," + encodeURI(src).replace(/#/g, '%23') + "\" />";
+      isrc.value = "<iframe src=\"data:text/html;charset=utf-8," + encodeURI(src).replace(/#/g, '%23') + "\"></iframe>";
       pagedata.value = "data:text/html;charset=utf-8," + encodeURI(src).replace(/#/g, '%23')
 
       const hash = btoa(html.value) + '-' + btoa(css.value) + '-' + btoa(js.value);
