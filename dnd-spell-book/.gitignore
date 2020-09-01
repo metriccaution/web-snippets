@@ -1,0 +1,8 @@
+/node_modules/
+!/public/
+/public/build/
+/public/raw-data/*
+!/public/raw-data/srd.json
+
+.DS_Store
+.vscode

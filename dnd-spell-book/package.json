@@ -1,0 +1,35 @@
+{
+  "name": "dnd-spell-book",
+  "version": "1.0.0",
+  "description": "A reference tool for playing Dungeons & Dragons (5th edition) - Allows for searching through spells your character can cast.\n\nBy default, this contains freely-licensed material (under the SRD), but allows for extension with homebrew content.",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public",
+    "validate": "svelte-check",
+    "test": "prettier --write '{public,src}/**/*.{ts,svelte,css,html,json}' '*.{json,md}' && npm run validate"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-typescript": "^4.0.0",
+    "@tsconfig/svelte": "^1.0.10",
+    "prettier": "^2.0.5",
+    "rollup": "^2.26.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "svelte": "^3.24.1",
+    "svelte-check": "^1.0.16",
+    "svelte-preprocess": "^4.0.12",
+    "tslib": "^2.0.1",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.159",
+    "@types/marked": "^1.1.0",
+    "lodash": "^4.17.20",
+    "marked": "^1.1.1",
+    "sirv-cli": "^1.0.6"
+  }
+}
