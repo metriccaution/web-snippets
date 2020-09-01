@@ -1,4 +1,7 @@
 <script lang="ts">
+  /**
+   * Full display of a spell and all its metadata
+   */
   import Markdown from "./Markdown.svelte";
 
   export let spell: SpellDetails;
@@ -49,7 +52,8 @@
     text-align: left;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.3em;
   }
 </style>

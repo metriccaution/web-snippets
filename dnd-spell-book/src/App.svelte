@@ -15,9 +15,9 @@
   $: currentSpell = $filteredSpells.find((s) => s.name === currentSpellName);
 
   fetch("raw-data/srd.json")
-    //  fetch("raw-data/all.json") // TODO
     .then((spells) => spells.json())
     .then((spells) => rawSpells.set(spells))
+    // TODO - Error display
     .catch((e) => console.log("Error fetching spells", e));
 </script>
 

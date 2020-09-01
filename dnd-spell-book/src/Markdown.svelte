@@ -1,4 +1,8 @@
 <script lang="ts">
+  /**
+   * Markdown display
+   */
+
   import marked from "marked";
   export let text = "";
 </script>
@@ -14,7 +18,7 @@
   }
 
   :global(.md th) {
-    background-color: #089e21;
+    background-color: #253237;
     color: #efefef;
   }
 </style>

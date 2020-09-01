@@ -27,12 +27,12 @@
     padding: 1em;
     white-space: pre-wrap;
     margin: 0.5em auto;
-    background-color: #25C440;
+    background-color: #9db4c0;
     box-shadow: 0px 3px 10px #333;
   }
 
   .active {
-    background-color: #089E21;
+    background-color: #5c6b73;
     color: #efefef;
   }
 </style>
