@@ -66,12 +66,10 @@ pMap(
       (body, project) =>
         body +
         `<div class="project">
-            <span>
-                <h2>
-                    <a href="./${project.name}">${project.name}</a>
-                </h2>
-                <p>${project.description}</p>
-            </span>
+          <h2>
+              <a href="./${project.name}">${project.name}</a>
+          </h2>
+          <p>${project.description}</p>
         </div>\n`,
       ""
     );
