@@ -13,18 +13,18 @@
     "@types/codemirror": "0.0.91",
     "@types/marked": "^0.7.4",
     "@types/mermaid": "^8.2.1",
-    "@types/prettier": "^2.0.2",
-    "codemirror": "^5.56.0",
+    "@types/prettier": "^2.1.0",
+    "codemirror": "^5.57.0",
     "marked": "^0.8.2",
     "mermaid": "^8.7.0",
     "p-debounce": "^2.1.0",
-    "preact": "^10.4.7",
-    "prettier": "^2.0.5"
+    "preact": "^10.4.8",
+    "prettier": "^2.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
+    "@babel/core": "^7.11.5",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
     "@rollup/plugin-commonjs": "^11.1.0",
@@ -39,7 +39,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-scss": "^2.6.0",
-    "rollup-plugin-terser": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.1",
     "typescript": "^3.9.7"
   }
 }

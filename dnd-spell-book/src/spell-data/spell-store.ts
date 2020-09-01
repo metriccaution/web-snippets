@@ -1,6 +1,6 @@
 import { flatten, uniq, uniqBy, flatMap } from "lodash";
 import flexsearch from "flexsearch";
-import { derived, writable } from "svelte/store";
+import { derived, writable, Readable } from "svelte/store";
 import { DataSource, FullSpell, Spell } from "./spell-types";
 
 export type { FullSpell } from "./spell-types";
@@ -51,7 +51,7 @@ const indexedSpells = derived(compiledSpells, (spells) => {
 /**
  * Spells matching the current search
  */
-export const filteredSpells = derived(
+export const filteredSpells: Readable<FullSpell[]> = derived(
   [searchTerm, indexedSpells, compiledSpells],
   ([term, index, spells]) => {
     // TODO - This breaks when searching while something's selected

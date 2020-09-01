@@ -111,7 +111,6 @@
 {#if spell.knownBy.length > 0}
   <h2>Known By</h2>
   <ul>
-
     {#each spell.knownBy as source}
       <li>{source}</li>
     {/each}
@@ -125,6 +124,4 @@
   {/each}
 {/if}
 
-{#each spell.license as license}
-  <a href={license.link}>{license.text}</a>
-{/each}
+{#each spell.license as license}<a href={license.link}>{license.text}</a>{/each}
