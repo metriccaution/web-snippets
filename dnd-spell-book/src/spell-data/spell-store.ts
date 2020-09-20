@@ -1,7 +1,8 @@
-import { flatten, uniq, uniqBy, flatMap } from "lodash";
-import flexsearch from "flexsearch";
+import { flatten, uniq, uniqBy, flatMap, memoize } from "lodash";
 import { derived, writable, Readable } from "svelte/store";
 import { DataSource, FullSpell, Spell } from "./spell-types";
+import { getSpellText } from "./markdown-to-text";
+import asRegex from "./text-to-regex";
 
 export type { FullSpell } from "./spell-types";
 
@@ -25,45 +26,20 @@ export const compiledSpells = derived(rawSpells, (spells) => {
   return data;
 });
 /**
- * A text-search index of the spells
- */
-const indexedSpells = derived(compiledSpells, (spells) => {
-  const start = Date.now();
-  const index = flexsearch.create({
-    doc: {
-      id: "name",
-      // TODO - Aliases
-      field: ["name", "description", "higherLevel"],
-    },
-  });
-
-  for (const spell of spells) {
-    index.add({
-      name: spell.name,
-      description: spell.description,
-      higherLevel: spell.higherLevel || "",
-    });
-  }
-  console.log("Indexed in", Date.now() - start);
-
-  return index;
-});
-/**
  * Spells matching the current search
  */
 export const filteredSpells: Readable<FullSpell[]> = derived(
-  [searchTerm, indexedSpells, compiledSpells],
-  ([term, index, spells]) => {
+  [searchTerm, compiledSpells],
+  ([term, spells]) => {
     // TODO - This breaks when searching while something's selected
     if (!term) return spells;
 
-    const matches: string[] = (index.search(term) as any).map(
-      (spell) => spell.name
-    );
+    const matches: string[] = spells
+      .filter(spellMatchesSearch.bind(null, asRegex(term)))
+      .map((spell) => spell.name);
     return spells.filter((spell) => matches.includes(spell.name));
   }
 );
-
 /**
  * Consolidate down the list of all aliases so that all things that refer to
  * the same spell are in the same place.
@@ -145,4 +121,16 @@ function collateData(data: DataSource[]): FullSpell[] {
       license,
     };
   });
+}
+
+const cachedSpellText = memoize(getSpellText);
+
+/**
+ * Does a spell match a search term
+ *
+ * @param term Text search term
+ * @param spell Spell to check
+ */
+function spellMatchesSearch(term: RegExp, spell: FullSpell): boolean {
+  return term.test(cachedSpellText(spell));
 }
