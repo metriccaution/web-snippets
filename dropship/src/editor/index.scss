@@ -12,5 +12,10 @@
     .cm-comment {
       color: #b2e4ae;
     }
+
+    // Hide always-on horizontal scrollbar in Chrome
+    .CodeMirror-scroll {
+      overflow: auto !important;
+    }
   }
 }
