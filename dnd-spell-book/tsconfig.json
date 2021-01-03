@@ -3,6 +3,7 @@
   "compilerOptions": {
     "importsNotUsedAsValues": "remove",
     "allowSyntheticDefaultImports": true,
+    "noEmit": true,
     "types": ["svelte", "jest"]
   },
   "include": ["src/**/*"],

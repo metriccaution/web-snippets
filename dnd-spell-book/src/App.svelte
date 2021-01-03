@@ -1,18 +1,17 @@
 <script lang="ts">
-  import {
-    rawSpells,
-    searchTerm,
-    filteredSpells,
-  } from "./spell-data/spell-store";
-  import SpellDetails from "./SpellDetails.svelte";
-  import SpellSummary from "./SpellSummary.svelte";
+  import { rawSpells, searchTerm, filteredSpells } from "./spell-data/store";
+  import { getName } from "./spell-data/get-spell-name";
+  import SpellDetails from "./spell-display/SpellDetails.svelte";
+  import SpellSummary from "./spell-display/SpellSummary.svelte";
 
   let currentSpellName = "";
 
   $: if (!currentSpellName && $filteredSpells.length > 0) {
-    currentSpellName = $filteredSpells[0].name;
+    currentSpellName = getName($filteredSpells[0]);
   }
-  $: currentSpell = $filteredSpells.find((s) => s.name === currentSpellName);
+  $: currentSpell = $filteredSpells.find(
+    (s) => getName(s) === currentSpellName
+  );
 
   fetch("raw-data/srd.json")
     .then((spells) => spells.json())
@@ -71,11 +70,11 @@
         <input type="text" bind:value={$searchTerm} />
       </div>
       <div class="summary_container">
-        {#each $filteredSpells as spell (spell.name)}
+        {#each $filteredSpells as spell (spell.names[0])}
           <SpellSummary
             {spell}
-            active={currentSpellName === spell.name}
-            on:click={() => (currentSpellName = spell.name)} />
+            active={currentSpellName === getName(spell)}
+            on:click={() => (currentSpellName = getName(spell))} />
         {/each}
       </div>
     </div>

@@ -2,16 +2,11 @@
   /**
    * Summary of a spell - Intended to be displayed in a big old list
    */
+  import type { FullSpell } from "../spell-data/spell-types";
+  import { getName } from "../spell-data/get-spell-name";
 
-  export let spell: SpellSummary;
+  export let spell: FullSpell;
   export let active: boolean;
-
-  interface SpellSummary {
-    name: string;
-    components: string[];
-    level: number;
-    school: string;
-  }
 
   $: level =
     spell.level === 0
@@ -38,6 +33,6 @@
 </style>
 
 <button class="spell_summary" on:click class:active on:click>
-  <b>{spell.name}</b>
+  <b>{getName(spell)}</b>
   {text}
 </button>
