@@ -1,5 +1,4 @@
 import marked from "marked";
-import { listen } from "svelte/internal";
 import { FullSpell } from "./spell-types";
 
 /**
@@ -62,7 +61,8 @@ export function getText(markdown: string): string {
  */
 export function getSpellText(spell: FullSpell): string {
   return [
-    getText(spell.name),
+    ...spell.names.map(name => name.name),
+    ...spell.names.map(name => name.bookName),
     getText(spell.description),
     getText(spell.higherLevel),
     getText(spell.range),
@@ -70,8 +70,7 @@ export function getSpellText(spell: FullSpell): string {
     getText(spell.duration),
     getText(spell.castingTime),
     getText(spell.school),
-    spell.pages.map((page) => getText(page.book)),
-    ...spell.aliases.map((alias) => getText(alias)),
-    ...spell.knownBy.map((knownBy) => getText(knownBy)),
+    ...spell.knownBy.map(source => source.name),
+    ...spell.knownBy.map(source => source.bookName),
   ].join("\n");
 }

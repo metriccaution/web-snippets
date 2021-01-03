@@ -3,30 +3,10 @@
    * Full display of a spell and all its metadata
    */
   import Markdown from "./Markdown.svelte";
+  import type { FullSpell } from "../spell-data/spell-types";
+  import { getName } from "../spell-data/get-spell-name";
 
-  export let spell: SpellDetails;
-
-  interface SpellDetails {
-    name: string;
-    description: string;
-    higherLevel: string;
-    range: string;
-    castingTime: string;
-    pages: Array<{
-      pageNumber: number;
-      book: string;
-    }>;
-    components: string[];
-    material: string | null;
-    duration: string;
-    school: string;
-    level: number;
-    knownBy: string[];
-    ritual: boolean;
-    concentration: boolean;
-    aliases: string[];
-    license: Array<{ link: string; text: string }>;
-  }
+  export let spell: FullSpell;
 
   $: components =
     spell.components
@@ -44,6 +24,15 @@
         }
       })
       .join(", ") + (spell.material ? ` (${spell.material})` : "");
+
+  $: spellName = getName(spell);
+  $: aliases = spell.names
+    .filter((alias) => alias.name !== spellName)
+    .map((alias) => alias.name)
+    .sort();
+  $: sourcePages = spell.names
+    .map((name) => `${name.bookName}, page ${name.pageNumber}`)
+    .sort();
 </script>
 
 <style>
@@ -58,10 +47,10 @@
   }
 </style>
 
-<h1>{spell.name}</h1>
+<h1>{spellName}</h1>
 
-{#if spell.aliases.length > 0}
-  <p>Also Known As {spell.aliases.map((a) => `"${a}"`).join(', ')}</p>
+{#if aliases.length > 1}
+  <p>Also Known As {aliases.map((a) => `"${a}"`).join(', ')}</p>
 {/if}
 
 <table>
@@ -112,16 +101,17 @@
   <h2>Known By</h2>
   <ul>
     {#each spell.knownBy as source}
-      <li>{source}</li>
+      <li>{source.name}</li>
     {/each}
   </ul>
 {/if}
 
-{#if spell.pages.length > 0}
-  <h2>This Spell is From</h2>
-  {#each spell.pages as page}
-    <p>{page.book}, page {page.pageNumber}</p>
-  {/each}
-{/if}
+<h2>This Spell is From</h2>
+{#each sourcePages as sourcePage}
+  <p>{sourcePage}</p>
+{/each}
 
-{#each spell.license as license}<a href={license.link}>{license.text}</a>{/each}
+<h2>Data License</h2>
+{#each spell.license as license}
+  <Markdown text={license} />
+{/each}
