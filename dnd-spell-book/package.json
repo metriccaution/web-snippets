@@ -7,7 +7,7 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check",
-    "test": "prettier --write '{public,src}/**/*.{ts,svelte,css,html,json}' '*.{json,md}' && npm run validate && jest"
+    "test": "prettier --write '{public,src}/**/*.{ts,css,html,json}' '*.{json,md}' && npm run validate && jest"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
