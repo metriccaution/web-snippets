@@ -61,8 +61,8 @@ export function getText(markdown: string): string {
  */
 export function getSpellText(spell: FullSpell): string {
   return [
-    ...spell.names.map(name => name.name),
-    ...spell.names.map(name => name.bookName),
+    ...spell.names.map((name) => name.name),
+    ...spell.names.map((name) => name.bookName),
     getText(spell.description),
     getText(spell.higherLevel),
     getText(spell.range),
@@ -70,7 +70,7 @@ export function getSpellText(spell: FullSpell): string {
     getText(spell.duration),
     getText(spell.castingTime),
     getText(spell.school),
-    ...spell.knownBy.map(source => source.name),
-    ...spell.knownBy.map(source => source.bookName),
+    ...spell.knownBy.map((source) => source.name),
+    ...spell.knownBy.map((source) => source.bookName),
   ].join("\n");
 }

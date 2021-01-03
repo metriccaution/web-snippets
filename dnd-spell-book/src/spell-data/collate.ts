@@ -7,7 +7,7 @@ import type { Book, BookData, FullSpell, Spell } from "./spell-types";
  */
 export default function collate(books: Book[]): FullSpell[] {
   // Group spells up by ID
-  const allSpells = flatten(books.map(book => book.spells));
+  const allSpells = flatten(books.map((book) => book.spells));
   const groupedSpells: Spell[][] = values(groupBy(allSpells, "id"));
 
   // Collect metadata we'll need later, by spell ID
@@ -22,8 +22,8 @@ export default function collate(books: Book[]): FullSpell[] {
         {
           name: spell.name,
           bookName: book.name,
-          pageNumber: spell.pageNumber
-        }
+          pageNumber: spell.pageNumber,
+        },
       ]);
 
       const licences = licenceMetadata.get(spell.id) || [];
@@ -38,8 +38,8 @@ export default function collate(books: Book[]): FullSpell[] {
           {
             bookName: book.name,
             name: knownBy.knownBy,
-            pageNumber: knownBy.pageNumber
-          }
+            pageNumber: knownBy.pageNumber,
+          },
         ]);
 
         const licences = licenceMetadata.get(spellId) || [];
@@ -48,7 +48,7 @@ export default function collate(books: Book[]): FullSpell[] {
     }
   }
 
-  return groupedSpells.map(spellGroup => {
+  return groupedSpells.map((spellGroup) => {
     const spell = spellGroup[0]; // Pick a 'primary' spell
 
     const licence: string[] = licenceMetadata.get(spell.id) || [];
@@ -70,7 +70,7 @@ export default function collate(books: Book[]): FullSpell[] {
       material: spell.material,
       license: licence.sort(),
       names: names.sort(compareProvenance),
-      knownBy: knownBy.sort(compareProvenance)
+      knownBy: knownBy.sort(compareProvenance),
     };
 
     if (!spell.material) {
