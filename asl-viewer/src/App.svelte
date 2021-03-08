@@ -46,7 +46,7 @@
     padding: 1em;
     max-width: 240px;
     margin: 0 auto;
-    height: 100%;
+    height: 90%;
   }
 
   @media (min-width: 640px) {
