@@ -7,6 +7,7 @@ const path = require("path");
 const pMap = require("p-map");
 const childProcess = require("child_process");
 const util = require("util");
+const package = require("./package.json");
 
 const config = {
   outputDirectory: "public",
@@ -65,7 +66,7 @@ pMap(
 )
   .then(async (projects) => {
     // Write main index
-    const contents = projects.reduce(
+    const components = projects.reduce(
       (body, project) =>
         body +
         `<div class="project">
@@ -76,6 +77,15 @@ pMap(
         </div>\n`,
       ""
     );
+
+    const footer = [
+      `Version ${package.version}`,
+      `Built at ${new Date().toISOString()}`,
+    ]
+      .map((item) => `<p>${item}</p>`)
+      .join("\n");
+
+    const contents = components + `\n<div class="info-footer">${footer}</div>`;
 
     const template = fs.readFileSync("index.html", "utf8");
 
