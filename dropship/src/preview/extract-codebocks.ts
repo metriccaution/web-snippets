@@ -20,29 +20,27 @@ export default (markdownText: string): CodeBlock[] =>
   markdownText
     .split("```")
     // Work out what type each block is
-    .map(
-      (block, index): CodeBlock => {
-        // Odd sections will be codeblocks, because of how split works
-        const isCodeblock = index % 2 === 1;
+    .map((block, index): CodeBlock => {
+      // Odd sections will be codeblocks, because of how split works
+      const isCodeblock = index % 2 === 1;
 
-        const lines = block.trim().split("\n");
-        const firstLine = lines[0].trim();
+      const lines = block.trim().split("\n");
+      const firstLine = lines[0].trim();
 
-        switch (firstLine) {
-          case "mermaid":
-            return {
-              type: "mermaid",
-              contents: lines.slice(1).join("\n"),
-            };
-          default:
-            return {
-              type: "markdown",
-              contents: isCodeblock
-                ? // If this is a code-block, put its formatting back
-                  "``` " + block + "\n```"
-                : // Otherwise, just return it back
-                  block,
-            };
-        }
+      switch (firstLine) {
+        case "mermaid":
+          return {
+            type: "mermaid",
+            contents: lines.slice(1).join("\n"),
+          };
+        default:
+          return {
+            type: "markdown",
+            contents: isCodeblock
+              ? // If this is a code-block, put its formatting back
+                "``` " + block + "\n```"
+              : // Otherwise, just return it back
+                block,
+          };
       }
-    );
+    });

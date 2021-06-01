@@ -36,9 +36,12 @@ pMap(
     await exec("npm i", {
       cwd: project,
     });
+    await exec("npm audit fix", {
+      cwd: project,
+    });
     await exec("CI=true npm t --if-present", {
-    	cwd: project,
-    })
+      cwd: project,
+    });
     await exec("npm run build", {
       cwd: project,
     });

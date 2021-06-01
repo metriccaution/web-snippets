@@ -5,9 +5,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.3"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "^3.4.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,7 +17,7 @@
     "prettier-watch": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
   },
   "devDependencies": {
-    "onchange": "^7.0.2",
+    "onchange": "^7.1.0",
     "prettier": "^1.19.1"
   },
   "homepage": "./",
