@@ -59,6 +59,11 @@ pMap(
       );
 
       console.log(`Complete ${projectName}`);
+
+      const { stdout } = await exec("ls -alR", {
+        cwd: project,
+      });
+      console.log(stdout);
       return { name, description };
     } catch (error) {
       throw new Error(`Error building ${project}: ${error}`);
