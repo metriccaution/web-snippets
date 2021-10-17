@@ -32,33 +32,37 @@ const exec = util.promisify(childProcess.exec);
 pMap(
   nodeProjects,
   async (project) => {
-    const projectName = path.relative(".", project);
-    console.log(`Building ${projectName}`);
-    await exec("npm i", {
-      cwd: project,
-    });
-    await exec("npm audit fix", {
-      cwd: project,
-    });
-    await exec("CI=true npm t --if-present", {
-      cwd: project,
-    });
-    await exec("npm run build", {
-      cwd: project,
-    });
-    const { name, description, staticBuild } = await fs.readJson(
-      path.resolve(project, "package.json")
-    );
+    try {
+      const projectName = path.relative(".", project);
+      console.log(`Building ${projectName}`);
+      await exec("npm install", {
+        cwd: project,
+      });
+      await exec("npm audit fix", {
+        cwd: project,
+      });
+      await exec("CI=true npm t --if-present", {
+        cwd: project,
+      });
+      await exec("npm run build", {
+        cwd: project,
+      });
+      const { name, description, staticBuild } = await fs.readJson(
+        path.resolve(project, "package.json")
+      );
 
-    const destination = path.resolve(config.outputDirectory, projectName);
-    await fs.mkdirp(destination);
-    await fs.copy(
-      path.resolve(project, staticBuild || config.buildDir),
-      destination
-    );
+      const destination = path.resolve(config.outputDirectory, projectName);
+      await fs.mkdirp(destination);
+      await fs.copy(
+        path.resolve(project, staticBuild || config.buildDir),
+        destination
+      );
 
-    console.log(`Complete ${projectName}`);
-    return { name, description };
+      console.log(`Complete ${projectName}`);
+      return { name, description };
+    } catch (error) {
+      throw new Error(`Error building ${project}: ${error}`);
+    }
   },
   {
     concurrency: 2,
