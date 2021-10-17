@@ -6,7 +6,8 @@
     "prestart": "rm -rf build/public && node bundle-information.js",
     "start": "esbuild src/app.tsx --sourcemap --servedir=build --outdir=build/public --bundle",
     "prebuild": "rm -rf build/public && node bundle-information.js",
-    "build": "esbuild src/app.tsx --sourcemap --outdir=build/public --bundle --minify"
+    "build": "esbuild src/app.tsx --sourcemap --outdir=build/public --bundle --minify",
+    "postbuild": "cp -R build public"
   },
   "keywords": [],
   "author": "",
