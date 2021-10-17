@@ -100,6 +100,8 @@ pMap(
       output,
       "utf8"
     );
+
+    await exec(`ls -alR ${config.outputDirectory}`);
   })
   .catch((e) => {
     console.error(e);
