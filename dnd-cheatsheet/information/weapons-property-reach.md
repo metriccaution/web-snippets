@@ -1,5 +1,5 @@
 ---
-title: Reach
+title: Reach (Weapon Property)
 reference: Player's Handbook, page 147
 ---
 

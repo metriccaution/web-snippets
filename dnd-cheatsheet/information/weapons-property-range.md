@@ -1,5 +1,5 @@
 ---
-title: Range
+title: Range (Weapon Property)
 reference: Player's Handbook, page 147
 ---
 

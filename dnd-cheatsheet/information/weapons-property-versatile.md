@@ -1,5 +1,5 @@
 ---
-title: Versatile
+title: Versatile (Weapon Property)
 reference: Player's Handbook, page 147
 ---
 

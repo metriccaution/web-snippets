@@ -1,5 +1,5 @@
 ---
-title: Ammunition
+title: Ammunition (Weapon Property)
 reference: Player's Handbook, page 146
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Thrown
+title: Thrown (Weapon Property)
 reference: Player's Handbook, page 147
 ---
 

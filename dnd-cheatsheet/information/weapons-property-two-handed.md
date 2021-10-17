@@ -1,5 +1,5 @@
 ---
-title: Two-handed
+title: Two-handed (Weapon Property)
 reference: Player's Handbook, page 147
 ---
 
