@@ -51,7 +51,7 @@ pMap(
         path.resolve(project, "package.json")
       );
 
-      const destination = path.resolve(config.outputDirectory, projectName);
+      const destination = path.resolve(config.outputDirectory, name);
       await fs.mkdirp(destination);
       await fs.copy(
         path.resolve(project, staticBuild || config.buildDir),
@@ -100,8 +100,6 @@ pMap(
       output,
       "utf8"
     );
-
-    await exec(`ls -alR ${config.outputDirectory}`);
   })
   .catch((e) => {
     console.error(e);

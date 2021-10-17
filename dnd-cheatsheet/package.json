@@ -1,5 +1,5 @@
 {
-  "name": "dm-screen",
+  "name": "dnd-cheatsheet",
   "version": "1.0.0",
   "description": "Quick look-up for D&D 5th edition",
   "staticBuild": "build",
