@@ -1,5 +1,5 @@
 ---
-title: Trap Damage
+title: Trap Difficulties
 reference: Dungeon Master's Guide, page 121
 ---
 

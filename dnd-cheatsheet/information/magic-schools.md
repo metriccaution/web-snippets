@@ -10,6 +10,6 @@ reference: Player's Handbook, page 203
 | Divination    | Revealing information                         |
 | Enchantment   | Affecting other's minds                       |
 | Evocation     | Manipulating energy, elemental damage         |
-| Illusion      | Deceiving                                     |
+| Illusion      | Deception                                     |
 | Necromancy    | Manipulating life energy, raising the dead    |
 | Transmutation | Changing the properties of people and objects |

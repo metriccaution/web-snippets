@@ -6,7 +6,7 @@ reference: Player's Handbook, page 186
 - Short rests
   - At least 1 hour
   - Spend hit dice to regain health
-  - Decision to spend more can be made after rolling others
+    - Decision to spend more can be made after rolling others
   - Some class features refresh
 - Long rests
   - At least 8 hours

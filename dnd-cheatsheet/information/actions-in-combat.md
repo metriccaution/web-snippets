@@ -5,38 +5,32 @@ reference: Player's Handbook, page 192
 
 # Dash
 
-- Action in combat
-- Double speed
+- Double speed this turn
 
 # Disengage
 
-- Action in combat
 - No opportunity attacks this turn
 
 # Dodge
 
-- Action in combat
-- Any attacks against you have disadvantage
-  - Until next turn
+- Any attacks against you have disadvantage this turn
   - Only if you can see the attacker
 - Dexterity saving throws with advantage
 - Stops if your speed is 0
 
 # Help
 
-- Action in combat
 - Aid another creature
-- Help with a task
+- Help with a _task_
   - They get advantage on their next ability check
   - Lasts until your next turn
-- Help with an attack
+- Help with an _attack_
   - They get advantage on their next attack
   - Hostile creature must be within 5 feet
   - Lasts until your next turn
 
 # Hide
 
-- Action in combat
 - Stealth check to hide
 
 # Ready Action
