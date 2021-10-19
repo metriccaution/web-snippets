@@ -14,7 +14,8 @@ const InfoCard = styled(Card)(() => ({
   margin: "1em",
 }));
 
-const MarkdownContainer = styled("span")(({ theme }) => ({
+const MarkdownContainer = styled("span")(() => ({
+  lineHeight: "1.4em",
   "& table": {
     margin: "0 auto",
 

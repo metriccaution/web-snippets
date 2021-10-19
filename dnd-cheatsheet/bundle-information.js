@@ -57,7 +57,7 @@ function convertFile(markdown) {
       title: metadata.title,
       body: [
         `# ${metadata.title}`,
-        ...sections.slice(2),
+        ...sections.slice(2).map((md) => md.replace(/^(#+)/gim, "$1#")),
         `_${metadata.reference}_`,
       ].join("\n\n"),
     };

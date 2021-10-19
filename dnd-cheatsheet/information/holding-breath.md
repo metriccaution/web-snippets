@@ -3,4 +3,4 @@ title: Holding Your Breath
 reference: Player's Handbook, page 183
 ---
 
-You can hold your breath for time equal to 1 + Constitution modifier (minimum 30 seconds).
+You can hold your breath for `1 + Constitution modifier` minutes (minimum 30 seconds).
