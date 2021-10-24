@@ -1,6 +1,8 @@
 ---
 title: Mounted Combat
-reference: Player's Handbook, page 198
+reference:
+  - Player's Handbook, page 155
+  - Player's Handbook, page 198
 ---
 
 - To be mounted, a creature must by at least one size class bigger
@@ -11,6 +13,7 @@ reference: Player's Handbook, page 198
   - This can be triggered by
     - The rider being knocked prone
     - The mount being forced to move
+  - Make checks at advantage if using a suitable saddle
 - Initiative
   - For a controlled mount, its initiative matches your's when you mount it
   - For an independent mount, it retains its place in initiative

@@ -1,6 +1,6 @@
 ---
 title: Improvising Damage
-reference: Dungeon Master's Guide 249
+reference: Dungeon Master's Guide, page 249
 ---
 
 - Danger levels

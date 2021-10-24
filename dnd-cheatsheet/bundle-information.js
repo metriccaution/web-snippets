@@ -53,12 +53,21 @@ function convertFile(markdown) {
     const frontmatter = sections[1];
     const metadata = yaml.load(frontmatter);
 
+    const reference = (
+      Array.isArray(metadata.reference)
+        ? metadata.reference
+        : [metadata.reference]
+    )
+      .sort()
+      .map((ref) => `_${ref}_`)
+      .join(", ");
+
     return {
       title: metadata.title,
       body: [
         `# ${metadata.title}`,
         ...sections.slice(2).map((md) => md.replace(/^(#+)/gim, "$1#")),
-        `_${metadata.reference}_`,
+        reference,
       ].join("\n\n"),
     };
   } catch (e) {

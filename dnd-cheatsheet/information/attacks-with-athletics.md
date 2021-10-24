@@ -15,6 +15,7 @@ reference: Player's Handbook, page 195
 - **Grappeling**
   - Inflict the grappeled effect
     - Speed is 0
+  - Requires a free hand
   - They can escape by forcing the check to be repeated
   - You can move them, but your speed is halved
     - Full speed if they're two sizes smaller, or less

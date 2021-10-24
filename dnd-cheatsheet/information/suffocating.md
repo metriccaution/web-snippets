@@ -1,5 +1,5 @@
 ---
-title: Suffocating
+title: Suffocating / Drowning
 reference: Player's Handbook, page 183
 ---
 
