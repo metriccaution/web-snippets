@@ -1,14 +1,17 @@
 import { atom, selector } from "recoil";
 import lunr from "lunr";
 import { InfoSnippet, informationSnippets } from "./snippets";
+import { urlParamAtom } from "./url-params";
 import type { Index } from "lunr";
 
 // TODO - Do some exact text matching too
 
-export const searchText = atom<string>({
+export const baseSearch = atom<string>({
   key: "searchText",
   default: "",
 });
+
+export const searchText = urlParamAtom("search", "");
 
 const makeSearch = (index: Index, text: string): string[] => {
   const results = index.search(text) as any;
