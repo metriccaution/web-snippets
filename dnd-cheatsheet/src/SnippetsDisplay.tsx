@@ -28,6 +28,11 @@ const MarkdownContainer = styled("span")(() => ({
   },
 }));
 
+const SpinnerContainer = styled("div")(() => ({
+  textAlign: "center",
+  padding: "2em",
+}));
+
 // TODO - Error handling
 
 export const Markdown = ({ markdown }: { markdown: string }) => (
@@ -55,9 +60,9 @@ const SnippetList = () => {
 };
 
 const LoadingResults = () => (
-  <div>
+  <SpinnerContainer>
     <CircularProgress />
-  </div>
+  </SpinnerContainer>
 );
 
 export const SearchResults = () => {
