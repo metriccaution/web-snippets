@@ -1,5 +1,5 @@
 ---
-title: Two Weapon Fighting
+title: Two Weapon Fighting / Dual Wielding
 reference: Player's Handbook, page 195
 ---
 
