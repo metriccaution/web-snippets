@@ -24,7 +24,7 @@ reference:
 | Pony           | 40 ft | 400 ft     | 4 miles  | 32 miles |
 | Warhorse       | 60 ft | 600 ft     | 6 miles  | 48 miles |
 
-- Some of these speeds aren't listed by are extrapolated from a travel pace of 8 hours a day
+- Some of these speeds aren't listed explicitly, but are extrapolated from a travel pace of 8 hours a day
 
 | Vehicle      | Miles Per Hour |
 | ------------ | -------------- |
