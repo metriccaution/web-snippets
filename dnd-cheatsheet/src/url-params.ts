@@ -10,7 +10,10 @@ import { atom, selector } from "recoil";
 /**
  * Get a parameter from the URL.
  */
-const getUrlParam = <T>(name: string, defaultValue?: string): string => {
+const getUrlParam = <T>(
+  name: string,
+  defaultValue?: string
+): string | undefined => {
   const currentValue = new URL(window.location.href).searchParams.get(name);
   return currentValue || defaultValue;
 };
@@ -41,7 +44,7 @@ export const urlParamAtom = (name: string, _default: string) => {
     default: getUrlParam(name, _default),
   });
 
-  return selector<string>({
+  return selector<string | undefined>({
     key: `${name}-url-param-selector`,
     get: ({ get }) => get(state),
     set: ({ set }, value) => {

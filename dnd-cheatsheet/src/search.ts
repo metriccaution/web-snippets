@@ -1,22 +1,10 @@
-import { atom, selector } from "recoil";
+import { selector } from "recoil";
 import lunr from "lunr";
 import { InfoSnippet, informationSnippets } from "./snippets";
 import { urlParamAtom } from "./url-params";
 import type { Index } from "lunr";
 
-// TODO - Do some exact text matching too
-
-export const baseSearch = atom<string>({
-  key: "searchText",
-  default: "",
-});
-
 export const searchText = urlParamAtom("search", "");
-
-const makeSearch = (index: Index, text: string): string[] => {
-  const results = index.search(text) as any;
-  return results.map((item: { ref: string }): string => item.ref);
-};
 
 const fetchSearchIndex = async (): Promise<any> => {
   const res = await fetch("./public/search.json");
@@ -42,6 +30,50 @@ const searchIndex = selector<Index>({
   },
 });
 
+/**
+ * Search logic
+ */
+const findMatches = (
+  items: InfoSnippet[],
+  searchIndex: Index,
+  searchText: string
+): InfoSnippet[] => {
+  const matchingTitles: string[] = [];
+
+  // Fuzzy text matching with Lunr
+  const fuzzyResults = searchIndex.search(searchText) as Array<{ ref: string }>;
+  fuzzyResults
+    .map((item: { ref: string }): string => item.ref)
+    .forEach((title) => {
+      if (!matchingTitles.includes(title)) {
+        matchingTitles.push(title);
+      }
+    });
+
+  // Exact text matching
+  const convertText = (text: string): string => text.toLocaleLowerCase();
+  const plainSearchText = convertText(searchText);
+  items
+    .map((item): InfoSnippet => ({ ...item, body: convertText(item.body) }))
+    .filter((item) => item.body.includes(plainSearchText))
+    .forEach((item) => {
+      if (!matchingTitles.includes(item.title)) {
+        matchingTitles.push(item.title);
+      }
+    });
+
+  // Turn matching titles into matching objects
+  const matches: InfoSnippet[] = [];
+  for (const title of matchingTitles) {
+    const item = items.find((item) => item.title === title);
+    if (item) {
+      matches.push(item);
+    }
+  }
+
+  return matches;
+};
+
 export const matchingResults = selector<InfoSnippet[]>({
   key: "searchResults",
   get: ({ get }) => {
@@ -49,10 +81,6 @@ export const matchingResults = selector<InfoSnippet[]>({
     const snippets = get(informationSnippets);
     const index = get(searchIndex);
 
-    const results = makeSearch(index, text).map((ref) =>
-      snippets.find((item) => item.title === ref)
-    );
-
-    return results;
+    return findMatches(snippets, index, text || "");
   },
 });

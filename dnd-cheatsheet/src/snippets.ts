@@ -20,8 +20,3 @@ export const informationSnippets = selector<InfoSnippet[]>({
     return await fetchRecords();
   },
 });
-
-export const snippetTitles = selector<string[]>({
-  key: "snippetTitles",
-  get: ({ get }) => get(informationSnippets).map((snippet) => snippet.title),
-});
