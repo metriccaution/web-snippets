@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "asl-types": "^1.2.1",
-    "mermaid": "^8.10.2",
+    "mermaid": "^8.11.0",
     "sirv-cli": "^1.0.12"
   }
 }
