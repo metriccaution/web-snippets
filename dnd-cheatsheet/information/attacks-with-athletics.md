@@ -1,5 +1,5 @@
 ---
-title: Grappeling & Shoving
+title: Grappleing & Shoving
 reference: Player's Handbook, page 195
 ---
 
@@ -12,10 +12,10 @@ reference: Player's Handbook, page 195
   - Either
     - Knock them prone
     - Push 5 feet
-- **Grappeling**
-  - Inflict the grappeled effect
+- **Grappleing**
+  - Inflict the grappleed effect
     - Speed is 0
   - Requires a free hand
-  - They can escape by forcing the check to be repeated
+  - _Breaking the Grapple_ - Can be done by the grappled creature forcing the check to be repeated, and succeeding
   - You can move them, but your speed is halved
     - Full speed if they're two sizes smaller, or less
