@@ -1,5 +1,6 @@
 {
-  "name": "svelte-app",
+  "name": "pi-day-2022",
+  "description": "Happy PI day - 2022",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,6 +11,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^2.0.0",
@@ -27,6 +29,9 @@
   },
   "dependencies": {
     "marked": "^4.0.12",
-    "sirv-cli": "^2.0.0"
+    "sirv-cli": "^2.0.0",
+    "vega": "^5.22.0",
+    "vega-embed": "^6.20.8",
+    "vega-lite": "^5.2.0"
   }
 }
