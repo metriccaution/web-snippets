@@ -1,11 +1,14 @@
 ---
 title: Magic Item Attunement
-reference: Dungeon Master's Guide, page 136
+reference:
+  - Dungeon Master's Guide, page 136
+  - Dungeon Master's Guide, page 141
 ---
 
 - Some magic items require attunment
 - If they do, the magical properties can't be used until attuned
 - A creature can attune at most 3 items at once
+  - Items that come in pairs (e.g. boots, or bracers) only take one of these attunement slots
 - Attune by spending a short rest
   - Focus only on the item
   - Be in physical contact with the item

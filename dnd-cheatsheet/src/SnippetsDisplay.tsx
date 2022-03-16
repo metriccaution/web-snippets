@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import marked from "marked";
+import { marked } from "marked";
 
 import type { InfoSnippet } from "./snippets";
 import { matchingResults } from "./search";
