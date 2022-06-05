@@ -15,3 +15,4 @@ reference: Player's Handbook, page 186
   - Full heal
   - Regain half total hit dice
   - Most class features refresh
+  - Lose temporary hp

@@ -1,10 +1,13 @@
 ---
 title: Death Saving Throws
-reference: Player's Handbook, page 197
+reference:
+  - Player's Handbook, page 197
+  - Player's Handbook, page 198
 ---
 
 - At the start of your turn, when you have 0 hit points, you roll a d20 (with no modifier) to try to avoid dying.
   - Healing any hit points stops this process, bringing you back up
+    - Temporary hp don't bring you back up
   - Rolling a 20 heals 1 hit point
   - Rolling a 1 counts as two failures
 - Rolling a 10 or greater is a success
