@@ -15,7 +15,7 @@
     "@types/mermaid": "^8.2.7",
     "@types/prettier": "^2.4.1",
     "codemirror": "^5.63.3",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "mermaid": "^8.13.3",
     "p-debounce": "^2.1.0",
     "preact": "^10.5.15",
