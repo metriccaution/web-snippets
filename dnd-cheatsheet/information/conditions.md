@@ -45,7 +45,7 @@ reference: Player's Handbook, page 290
 
 - Can't take actions or reactions
 - Fails Strength and Dexterity checks
-- Attack rolls have against the creature have disadvantage
+- Attack rolls have against the creature have advantage
 - Melee hits auto-crit
 
 # Petrified
