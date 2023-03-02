@@ -30,7 +30,7 @@
   "dependencies": {
     "marked": "^4.0.12",
     "sirv-cli": "^2.0.0",
-    "vega": "^5.22.0",
+    "vega": "^5.23.0",
     "vega-embed": "^6.20.8",
     "vega-lite": "^5.2.0"
   }
