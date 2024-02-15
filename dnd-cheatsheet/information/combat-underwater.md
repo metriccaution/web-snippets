@@ -4,7 +4,7 @@ reference: Player's Handbook, page 198
 ---
 
 - Melee weapon attacks
-  - Only effect if you _don't_ have a simming speed
+  - Only effect if you _don't_ have a swimming speed
   - Disadvantage on the attack unless using a dagger, javelin, shortsword, spear or trident
 - Ranged weapon attacks
   - Automatically miss beyond normal range
