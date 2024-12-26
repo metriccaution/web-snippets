@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: "public",
-    emptyOutDir: true, // also necessary
+    emptyOutDir: true,
   },
 });
