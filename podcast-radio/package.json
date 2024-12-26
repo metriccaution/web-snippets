@@ -1,6 +1,7 @@
 {
   "name": "podcast-radio",
   "description": "Bringing the radio experience to podcasts.",
+  "staticBuild": "dist",
   "private": true,
   "version": "0.0.0",
   "type": "module",
