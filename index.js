@@ -26,9 +26,7 @@ const nodeProjects = fs
   .map((f) => path.resolve(f))
   .filter((f) => fs.lstatSync(f).isDirectory())
   .filter((f) => fs.existsSync(path.resolve(f, "package.json")))
-  .sort()
-  // TODO - Temporary
-  .filter((p) => p.includes("podcast"));
+  .sort();
 
 const exec = util.promisify(childProcess.exec);
 pMap(
@@ -56,10 +54,10 @@ pMap(
       });
 
       console.log(`\tBuilding ${projectName}`);
-      const buildRes = await exec("npm run build", {
+      await exec("npm run build", {
         cwd: project,
       });
-      console.log({ project, buildRes });
+
       const { name, description, staticBuild } = await fs.readJson(
         path.resolve(project, "package.json")
       );
@@ -67,14 +65,6 @@ pMap(
       console.log(`\tCopying built files ${projectName}`);
       const destination = path.resolve(config.outputDirectory, name);
       await fs.mkdirp(destination);
-
-      const contents = await exec("ls -al", {
-        cwd: project,
-      });
-      console.log({
-        project,
-        listing: contents.stdout,
-      });
 
       await fs.copy(
         path.resolve(project, staticBuild || config.buildDir),
