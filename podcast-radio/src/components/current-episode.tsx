@@ -31,13 +31,15 @@ const CurrentEpisode: FC<CurrentEpisodeProps> = ({
   );
   const estimatedEnd = new Date(currentTimestamp + remainingSeconds * 1000);
 
-  const episodeTitle = episode.link ? (
-    <Link target="_blank" href={episode.link}>
-      {episode.title}
-    </Link>
-  ) : (
-    episode.title
-  );
+  const episodeLink = episode.link ? (
+    <>
+      {" - "}
+      <Link target="_blank" href={episode.link}>
+        Episode link
+      </Link>
+    </>
+  ) : null;
+
   const podcastTitle = episode.podcastLink ? (
     <Link target="_blank" href={episode.podcastLink}>
       {episode.podcastTitle}
@@ -48,16 +50,20 @@ const CurrentEpisode: FC<CurrentEpisodeProps> = ({
 
   return (
     <>
+      <LinearProgress variant="determinate" value={progress} />
       <Typography component="h1" variant="h5">
-        {episodeTitle}
+        {episode.title}
       </Typography>
 
       <Typography>
         <TimeDisplay label="Start" date={estimatedStart} />
         <TimeDisplay label="End" date={estimatedEnd} />
       </Typography>
-      <Typography>From {podcastTitle}</Typography>
-      <LinearProgress variant="determinate" value={progress} />
+
+      <Typography>
+        From {podcastTitle}
+        {episodeLink}
+      </Typography>
     </>
   );
 };

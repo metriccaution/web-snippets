@@ -9,6 +9,7 @@ import Player from "./components/player.tsx";
 import StationPicker from "./components/station-picker.tsx";
 import { Config, loadStations, StationContents } from "./helpers/stations.ts";
 import { getCurrent } from "./helpers/timing.ts";
+import UpNext from "./components/up-next.tsx";
 
 function App() {
   const now = Date.now();
@@ -109,6 +110,8 @@ function App() {
                 currentProgress={currentTime}
                 episode={currentStation.episodes[currentTrack]}
               />
+
+              <UpNext episode={currentStation.episodes[currentTrack + 1]} />
 
               <Player
                 playing={playing}
