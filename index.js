@@ -26,7 +26,9 @@ const nodeProjects = fs
   .map((f) => path.resolve(f))
   .filter((f) => fs.lstatSync(f).isDirectory())
   .filter((f) => fs.existsSync(path.resolve(f, "package.json")))
-  .sort();
+  .sort()
+  // TODO - Temporary
+  .filter((p) => p.includes("podcast"));
 
 const exec = util.promisify(childProcess.exec);
 pMap(
@@ -54,9 +56,10 @@ pMap(
       });
 
       console.log(`\tBuilding ${projectName}`);
-      await exec("npm run build", {
+      const buildRes = await exec("npm run build", {
         cwd: project,
       });
+      console.log({ project, buildRes });
       const { name, description, staticBuild } = await fs.readJson(
         path.resolve(project, "package.json")
       );
