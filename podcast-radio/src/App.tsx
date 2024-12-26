@@ -10,14 +10,14 @@ import StationPicker from "./components/station-picker.tsx";
 import UpNext from "./components/up-next.tsx";
 import { loadStations } from "./helpers/stations.ts";
 import { getCurrent } from "./helpers/timing.ts";
-import type { Config, StationContents } from "./stations.ts";
+import type { Config, FeedContents } from "./stations.ts";
 
 function App() {
   const now = Date.now();
 
   const [config, setConfig] = useState<Config | undefined>();
   const [currentStation, setCurrentStation] = useState<
-    StationContents | undefined
+    FeedContents | undefined
   >();
   const [currentTrack, setCurrentTrack] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);

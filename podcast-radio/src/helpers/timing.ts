@@ -1,11 +1,11 @@
-import type { StationContents } from "../stations";
+import type { FeedContents } from "../stations";
 
 /**
  * When picking up a station, work out where we should be if it had been
  * playing on its own.
  */
 export const getCurrent = (
-  station: StationContents,
+  station: FeedContents,
   startTime: Date,
   now: Date,
 ): { episodeIndex: number; timeOffsetSeconds: number } => {

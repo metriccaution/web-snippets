@@ -1,14 +1,14 @@
 import { writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Episode, StationContents } from "../stations.ts";
+import type { Episode, FeedContents } from "../stations.ts";
 import { combine } from "./lib/grouping.ts";
 import { parseFeed } from "./lib/parser.ts";
 import { loadStations } from "./lib/stations.ts";
 
 const cwd = dirname(fileURLToPath(import.meta.url));
 
-const data: { stations: StationContents[] } = {
+const data: { stations: FeedContents[] } = {
   stations: [],
 };
 
