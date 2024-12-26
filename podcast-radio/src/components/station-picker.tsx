@@ -1,7 +1,7 @@
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { FC } from "react";
-import { StationContents } from "../helpers/stations";
+import type { StationContents } from "../stations";
 
 export interface StationPickerProps {
   stations: StationContents[];

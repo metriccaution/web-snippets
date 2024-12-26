@@ -1,12 +1,12 @@
-import { z } from "zod";
 import yaml from "js-yaml";
+import { lstat, readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { readdir, lstat, readFile } from "node:fs/promises";
+import { z } from "zod";
 
 /**
  * Config source for a radio station.
  */
-export interface Station {
+export interface StationSource {
   title: string;
   combineBy: // Concat each podcast's list of episodes, in the order they're listed
   | "as-is"
@@ -17,34 +17,7 @@ export interface Station {
   feeds: string[];
 }
 
-/**
- * A single episode of a podcast.
- */
-export interface Episode {
-  title: string;
-  link?: string;
-  url: string;
-  durationSeconds: number;
-  podcastTitle: string;
-  podcastLink?: string;
-}
-
-/**
- * Everything from a given station.
- */
-export interface StationContents {
-  title: string;
-  episodes: Episode[];
-}
-
-/**
- * Everything precalculated, to be loaded later.
- */
-export interface Config {
-  stations: StationContents[];
-}
-
-const stationSchema: z.Schema<Station> = z.object({
+const stationSchema: z.Schema<StationSource> = z.object({
   title: z.string(),
   combineBy: z.enum(["as-is", "shuffle", "interleave"]),
   feeds: z.array(z.string()),
@@ -55,7 +28,7 @@ const stationSchema: z.Schema<Station> = z.object({
  */
 export async function* loadStations(
   stationsDirectory: string,
-): AsyncGenerator<Station> {
+): AsyncGenerator<StationSource> {
   for (const name of await readdir(stationsDirectory)) {
     const configFilePath = join(stationsDirectory, name);
     const stats = await lstat(configFilePath);

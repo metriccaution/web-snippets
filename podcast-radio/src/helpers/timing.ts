@@ -1,4 +1,4 @@
-import { StationContents } from "./stations";
+import type { StationContents } from "../stations";
 
 /**
  * When picking up a station, work out where we should be if it had been

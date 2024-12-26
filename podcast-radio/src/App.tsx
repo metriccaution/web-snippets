@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 import CurrentEpisode from "./components/current-episode.tsx";
 import Player from "./components/player.tsx";
 import StationPicker from "./components/station-picker.tsx";
-import { Config, loadStations, StationContents } from "./helpers/stations.ts";
-import { getCurrent } from "./helpers/timing.ts";
 import UpNext from "./components/up-next.tsx";
+import { loadStations } from "./helpers/stations.ts";
+import { getCurrent } from "./helpers/timing.ts";
+import type { Config, StationContents } from "./stations.ts";
 
 function App() {
   const now = Date.now();

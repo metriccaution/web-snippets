@@ -2,7 +2,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { FC } from "react";
-import { Episode } from "../helpers/stations";
+import type { Episode } from "../stations";
 import TimeDisplay from "./time-display";
 
 export interface CurrentEpisodeProps {

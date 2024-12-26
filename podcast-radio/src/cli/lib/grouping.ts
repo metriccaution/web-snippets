@@ -3,13 +3,14 @@
  */
 
 import { shuffle } from "es-toolkit";
-import type { Episode, Station } from "./stations";
+import type { Episode } from "../../stations";
+import type { StationSource } from "./stations";
 
 /**
  * Combine different podcast's episodes different ways.
  */
 export const combine = (
-  mode: Station["combineBy"],
+  mode: StationSource["combineBy"],
   groups: Episode[][],
 ): Episode[] => {
   switch (mode) {

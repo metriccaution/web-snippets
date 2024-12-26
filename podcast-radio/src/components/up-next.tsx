@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import { FC } from "react";
-import { Episode } from "../helpers/stations";
+import type { Episode } from "../stations";
 
 export interface CurrentEpisodeProps {
   episode: Episode;
