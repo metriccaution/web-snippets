@@ -1,0 +1,6 @@
+title: Gameshows
+combineBy: "interleave"
+feeds:
+  - https://audioboom.com/channels/5097784.rss
+  - https://www.escapethispodcast.com/feed.xml
+  - https://www.solvethismurder.com/feed.xml
