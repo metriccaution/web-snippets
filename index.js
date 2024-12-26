@@ -36,7 +36,7 @@ pMap(
       const projectName = path.relative(".", project);
       console.log(`Building ${projectName}`);
 
-      console.log(`\tInstalling ${projectName}`)
+      console.log(`\tInstalling ${projectName}`);
       await exec("npm install", {
         cwd: project,
       });
@@ -48,12 +48,12 @@ pMap(
         // Carry on, this is just nice to have
       }
 
-      console.log(`\tTesting ${projectName}`)
+      console.log(`\tTesting ${projectName}`);
       await exec("CI=true npm t --if-present", {
         cwd: project,
       });
 
-      console.log(`\tBuilding ${projectName}`)
+      console.log(`\tBuilding ${projectName}`);
       await exec("npm run build", {
         cwd: project,
       });
@@ -61,9 +61,18 @@ pMap(
         path.resolve(project, "package.json")
       );
 
-      console.log(`\tCopying built files ${projectName}`)
+      console.log(`\tCopying built files ${projectName}`);
       const destination = path.resolve(config.outputDirectory, name);
       await fs.mkdirp(destination);
+
+      const contents = await exec("ls -al", {
+        cwd: project,
+      });
+      console.log({
+        project,
+        listing: contents.stdout,
+      });
+
       await fs.copy(
         path.resolve(project, staticBuild || config.buildDir),
         destination
