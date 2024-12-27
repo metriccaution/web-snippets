@@ -2,18 +2,14 @@ import yaml from "js-yaml";
 import { lstat, readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { z } from "zod";
+import type { CombinationMode } from "../../stations";
 
 /**
  * Config source for a radio station.
  */
 export interface StationSource {
   title: string;
-  combineBy: // Concat each podcast's list of episodes, in the order they're listed
-  | "as-is"
-    // Completely random
-    | "shuffle"
-    // Try to alternate between episodes, but we might need to chunk them
-    | "interleave";
+  combineBy: CombinationMode;
   feeds: string[];
 }
 

@@ -1,12 +1,12 @@
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { FC } from "react";
-import type { FeedContents } from "../stations";
+import type { StationConfig } from "../stations";
 
 export interface StationPickerProps {
-  stations: FeedContents[];
-  value: FeedContents | undefined;
-  onChange: (station: FeedContents) => void;
+  stations: StationConfig[];
+  value: StationConfig | undefined;
+  onChange: (station: StationConfig) => void;
 }
 
 const StationPicker: FC<StationPickerProps> = ({

@@ -8,16 +8,16 @@ import CurrentEpisode from "./components/current-episode.tsx";
 import Player from "./components/player.tsx";
 import StationPicker from "./components/station-picker.tsx";
 import UpNext from "./components/up-next.tsx";
-import { loadStations } from "./helpers/stations.ts";
+import { generateStationFeed, loadStations } from "./helpers/stations.ts";
 import { getCurrent } from "./helpers/timing.ts";
-import type { Config, FeedContents } from "./stations.ts";
+import type { Config, StationConfig } from "./stations.ts";
 
 function App() {
   const now = Date.now();
 
   const [config, setConfig] = useState<Config | undefined>();
   const [currentStation, setCurrentStation] = useState<
-    FeedContents | undefined
+    StationConfig | undefined
   >();
   const [currentTrack, setCurrentTrack] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -46,6 +46,10 @@ function App() {
     return null;
   }
 
+  const stationFeed = currentStation
+    ? generateStationFeed(config, currentStation.title)
+    : undefined;
+
   return (
     <Container maxWidth="lg">
       <Grid container spacing="1rem">
@@ -62,7 +66,7 @@ function App() {
               }
 
               const { episodeIndex, timeOffsetSeconds } = getCurrent(
-                currentStation ?? stations[0],
+                stationFeed ?? generateStationFeed(config, stations[0].title),
                 new Date(0),
                 new Date(),
               );
@@ -87,7 +91,7 @@ function App() {
             onChange={(station) => {
               setCurrentStation(station);
               const { episodeIndex, timeOffsetSeconds } = getCurrent(
-                station,
+                generateStationFeed(config, station.title),
                 new Date(0),
                 new Date(),
               );
@@ -104,19 +108,19 @@ function App() {
             sm: 12,
           }}
         >
-          {currentStation ? (
+          {stationFeed ? (
             <>
               <CurrentEpisode
                 currentTimestamp={now}
                 currentProgress={currentTime}
-                episode={currentStation.episodes[currentTrack]}
+                episode={stationFeed.episodes[currentTrack]}
               />
 
-              <UpNext episode={currentStation.episodes[currentTrack + 1]} />
+              <UpNext episode={stationFeed.episodes[currentTrack + 1]} />
 
               <Player
                 playing={playing}
-                source={currentStation.episodes[currentTrack].url}
+                source={stationFeed.episodes[currentTrack].url}
                 startAtSeconds={startAtSeconds}
                 onTimeUpdate={({ currentTime }) => setCurrentTime(currentTime)}
                 onComplete={() => {
